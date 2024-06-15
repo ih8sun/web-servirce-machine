@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model SensorData {
+  id          Int       @id @default(autoincrement())
+  fecha       DateTime? @db.DateTime(0)
+  usaqi       Int?
+  categoria   String?   @db.VarChar(255)
+  co2_ppm     Float?
+  co2_ppb     Float?
+  humedad     Float?
+  PM25_ug_m3  Float?
+  PM10_ug_m3  Float?
+  PM1_ug_m3   Float?
+  PM100_ug_m3 Float?
+}
