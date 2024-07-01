@@ -1,23 +1,22 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "./"
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-model SensorData {
+model sensor {
   id          Int       @id @default(autoincrement())
-  fecha       DateTime? @db.DateTime(0)
-  usaqi       Int?
-  categoria   String?   @db.VarChar(255)
-  co2_ppm     Float?
-  co2_ppb     Float?
-  humedad     Float?
-  PM25_ug_m3  Float?
-  PM10_ug_m3  Float?
-  PM1_ug_m3   Float?
-  PM100_ug_m3 Float?
+  todate      DateTime? @db.Timestamp(6)
+  usaqi       Decimal?  @db.Decimal
+  co2_ppm     Decimal?  @db.Decimal
+  co_ppb      Decimal?  @db.Decimal
+  r_humidity  Decimal?  @db.Decimal
+  pm2_5       Decimal?  @db.Decimal
+  pm10        Decimal?  @db.Decimal
+  pm1         Decimal?  @db.Decimal
+  pm100       Decimal?  @db.Decimal
+  temperature Decimal?  @db.Decimal
 }
